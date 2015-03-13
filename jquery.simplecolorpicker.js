@@ -56,10 +56,12 @@
       }
 
       // Build the list of colors
-      // <span class="color selected" title="Green" style="background-color: #7bd148;" role="button"></span>
+      // Color HEX code is added to CSS Classes with # removed and 'cp-' prepended
+      // <span class="color cp-ffffff selected" title="Green" style="background-color: #7bd148;" role="button"></span>
       self.$select.find('> option').each(function() {
         var $option = $(this);
         var color = $option.val();
+        var colorCssClass = 'cp-' + color.substring(1);
 
         var isSelected = $option.is(':selected');
         var isDisabled = $option.is(':disabled');
@@ -84,7 +86,7 @@
           role = ' role="button" tabindex="0"';
         }
 
-        var $colorSpan = $('<span class="color"'
+        var $colorSpan = $('<span class="color ' + colorCssClass + '"'
                          + title
                          + ' style="background-color: ' + color + ';"'
                          + ' data-color="' + color + '"'
